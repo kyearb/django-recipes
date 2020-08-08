@@ -1,0 +1,33 @@
+{% extends "recipes/base_generic.html" %}
+
+{% block title %}
+{{ recipe.name }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ recipe.name }}</h1>
+    <a>
+        Prep Time: {{ recipe.prep_time }} min.
+        Cook Time: {{ recipe.cook_time }} min
+    </a>
+    <h2>Ingredients</h2>
+    <ul>
+        {% if recipe.ingredient_set.all %}
+            {% for ingredient in recipe.ingredient_set.all %}
+            <li>{{ingredient.name}}</li>
+            {% endfor %}
+        {% else %}
+            <li>None</li>
+        {% endif %}
+    </ul>
+    <h2>Instructions</h2>
+    <ol>
+        {% if recipe.instruction_set.all %}
+            {% for instruction in recipe.instruction_set.all %}
+            <li>{{instruction.step_text}}</li>
+            {% endfor %}
+        {% else %}
+            <li>None</li>
+        {% endif %}
+    </ol>
+{% endblock %}

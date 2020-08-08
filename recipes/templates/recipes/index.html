@@ -1,0 +1,35 @@
+{% extends "recipes/base_generic.html" %}
+
+{% block title %}
+Recipe index
+{% endblock %}
+
+{% block content %}
+    <h1>Recipes</h1>
+    <div class="row">
+        <div class="col-sm-3">
+            <p>New recipes are shown below</p>
+            {% if new_recipe_list %}
+                <ul>
+                    {% for recipe in new_recipe_list %}
+                    <li><a href="{% url 'recipes:detail' recipe.id %}">{{ recipe.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No new recipes available</p>
+            {% endif %}
+        </div>
+        <div class="column">
+            <p>Old recipes are shown below</p>
+            {% if old_recipe_list %}
+                <ul>
+                    {% for recipe in old_recipe_list %}
+                    <li><a href="{% url 'recipes:detail' recipe.id %}">{{ recipe.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No recipes available</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

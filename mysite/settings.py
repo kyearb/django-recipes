@@ -123,5 +123,5 @@ STATIC_URL = '/static/'
 
 # gsheets
 GSHEETS = {
-    'CLIENT_SECRETS': '<PATH TO DOWNLOADED CREDENTIALS>'
+    'CLIENT_SECRETS': 'credentials.json'
 }
